@@ -25,6 +25,7 @@ const Home = () => {
   const handleAddCart = (item) => {
     dispatch(addToCart(item));
   };
+
   return (
     <>
       <Navbar />

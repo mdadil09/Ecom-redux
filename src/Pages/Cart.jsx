@@ -140,7 +140,10 @@ const Cart = () => {
                     : 0.0}
                 </div>
               </div>
-              <Link style={{ textDecoration: "none" }} to="/checkout">
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`${cart.length > 0 ? "/checkout" : ""}`}
+              >
                 {" "}
                 <button className="cart-btn">CHECKOUT</button>
               </Link>

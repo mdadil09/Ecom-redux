@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../style.css";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignIn } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [menuActive, setMenuActive] = useState(false);
@@ -37,10 +39,15 @@ const Navbar = () => {
           <Link href="#">About</Link>
         </li>
       </ul>
-      <Link className="cart-icon" to="/cart">
-        🛒
-        <div className="cart-quantity">{item.length}</div>{" "}
-      </Link>
+      <div className="right-side">
+        <Link className="login-button" to="/login">
+          Login <FontAwesomeIcon icon={faSignIn} />
+        </Link>
+        <Link className="cart-icon" to="/cart">
+          🛒
+          <div className="cart-quantity">{item.length}</div>{" "}
+        </Link>
+      </div>
     </div>
   );
 };
