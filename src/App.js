@@ -7,7 +7,7 @@ import Wishlist from "./Pages/Wishlist";
 import Orders from "./Pages/Orders";
 import SingleProducts from "./Pages/SingleProducts";
 import CheckoutPage from "./components/Checkout/CheckoutPage";
-import Login from "./Pages/Login";
+import AuthPage from "./Pages/AuthPage";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/productDetails/:id" element={<SingleProducts />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<AuthPage />} />
       </Routes>
     </div>
   );
