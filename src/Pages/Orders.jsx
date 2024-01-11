@@ -18,8 +18,7 @@ const Orders = () => {
 
   const { currentUser } = useAuth();
 
-  console.log(currentUser.displayName);
-
+  console.log(cusDetails);
   const toggleModal = () => {
     setModal(!modal);
   };

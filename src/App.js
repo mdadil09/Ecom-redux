@@ -9,6 +9,8 @@ import SingleProducts from "./Pages/SingleProducts";
 import CheckoutPage from "./components/Checkout/CheckoutPage";
 import AuthPage from "./Pages/AuthPage";
 import ProtectedRoute from "./Auth/ProtectedRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/productDetails/:id" element={<SingleProducts />} />
         <Route path="/auth" element={<AuthPage />} />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

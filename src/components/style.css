@@ -310,7 +310,7 @@ a {
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: pre;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .login-button:hover {
@@ -333,7 +333,7 @@ a {
 }
 
 .hamburger-menu:hover {
-  background-color: #f0f0f0;
+  background-color: none;
 }
 
 .hamburger-menu span {
@@ -357,6 +357,17 @@ a {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.wishlist-icon-nav {
+  position: relative;
+  right: 20px;
+  cursor: pointer;
+}
+
+.wishlist-icon-nav img {
+  width: 20px;
+  height: 20px;
+}
+
 @media only screen and (max-width: 600px) {
   .navbar {
     flex-direction: row;
@@ -364,18 +375,30 @@ a {
   }
 
   .navbar-logo {
-    order: 0;
+    font-size: 1.2em;
+    order: 1;
+    margin-left: 0;
+    margin-right: auto;
   }
 
   .hamburger-menu {
+    font-size: 1em;
     display: block;
-    order: 1;
+    order: 0;
+    margin-right: 5px;
+    margin-left: 0;
+    margin-top: 4px;
   }
 
   .cart-icon {
     display: block;
     margin-left: auto;
     z-index: 2;
+  }
+
+  .cart-quantity {
+    top: -4px;
+    right: -8px;
   }
 
   .navbar-menu {
@@ -405,7 +428,14 @@ a {
   .right-side {
     display: flex;
     justify-content: none;
-    margin-left: 40px;
+    order: 2;
+  }
+
+  .login-button {
+    margin-right: 0;
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -801,12 +831,12 @@ button:focus {
 }
 
 .hero-btn {
-  background-color: hsl(330, 67%, 1%);
-  border: 0;
+  background-color: transparent;
+  border: 1px solid black;
   outline: none;
-  padding: 15px 50px;
-  border-radius: 10rem;
-  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
   font-weight: bold;
   font-family: "open sans";
   font-size: 1.1rem;
@@ -828,7 +858,7 @@ button:focus {
     padding: 20px;
   }
   .hero-text {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: hsl(192, 100%, 9%);
     margin-bottom: 10px;
   }

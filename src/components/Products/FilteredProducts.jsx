@@ -8,7 +8,7 @@ const FilteredProducts = ({ products, selectedOption }) => {
   return (
     <div className="products-wrapper">
       {filteredProducts.map((item) => (
-        <Card products={item} />
+        <Card key={item.id} products={item} />
       ))}
     </div>
   );

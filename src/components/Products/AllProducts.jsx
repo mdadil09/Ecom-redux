@@ -5,7 +5,7 @@ const AllProducts = ({ products }) => {
   return (
     <div className="products-wrapper">
       {products.map((item) => (
-        <Card products={item} />
+        <Card key={item.id} products={item} />
       ))}
     </div>
   );

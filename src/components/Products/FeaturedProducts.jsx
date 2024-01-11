@@ -6,7 +6,7 @@ const FeaturedProducts = ({ products }) => {
   return (
     <div className="products-wrapper">
       {featuredProducts.map((item) => (
-        <Card products={item} />
+        <Card key={item.id} products={item} />
       ))}
     </div>
   );

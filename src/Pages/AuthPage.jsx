@@ -97,7 +97,7 @@ const AuthPage = () => {
           });
         }
       );
-      toast.success("Successfully Signed In");
+      toast.success("Successfully registered!");
       navigate("/auth");
       console.log(user);
     } catch (error) {

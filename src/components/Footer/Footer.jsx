@@ -7,7 +7,7 @@ const Footer = () => {
       <footer className="footer-distributed">
         <div className="footer-left">
           <h3>
-            Redux Store
+            RedKart
             <span>
               <img
                 style={{ height: "20vh" }}
@@ -54,16 +54,16 @@ const Footer = () => {
           </p>
           <div className="footer-icons">
             <Link to="#">
-              <i className="fa fa-facebook" />
+              <i className="fab fa-facebook-f" />
             </Link>
             <Link to="#">
-              <i className="fa fa-twitter" />
+              <i className="fab fa-twitter" />
             </Link>
             <Link to="#">
-              <i className="fa fa-linkedin" />
+              <i className="fab fa-linkedin" />
             </Link>
             <Link to="#">
-              <i className="fa fa-instagram" />
+              <i className="fab fa-instagram" />
             </Link>
           </div>
         </div>

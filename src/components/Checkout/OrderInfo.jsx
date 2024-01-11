@@ -90,14 +90,14 @@ const OrderInfo = ({
             <hr />
             <h5>Delivery Address</h5>
             <hr />
-            <div className="user-summary">
-              <p>Jhon Doe</p>
-              <p>7743461000</p>
-              <p>jhonDoe7@gmail.com</p>
-              <p>
-                31-B,Hoshiyarpur,Sector-51,<br></br>Noida,Uttar Patdesh
-              </p>
-            </div>
+            {cusDetails.map((item) => (
+              <div className="user-summary">
+                <p>{item.name}</p>
+                <p>{item.mobile}</p>
+                <p>{item.email}</p>
+                <p>{item.address}</p>
+              </div>
+            ))}
           </div>
         </div>
       </Modal>
