@@ -43,9 +43,9 @@ const AuthPage = () => {
     console.log("isActive after toggle:", isActive);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
   const handleSigninClick = async (e) => {
     e.preventDefault();

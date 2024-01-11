@@ -9,9 +9,11 @@ import {
 } from "../../redux/slice/wishListSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/slice/cartSlice";
+import useAuth from "../../Auth/useAuth";
 
 const Card = ({ products }) => {
   const dispatch = useDispatch();
+  const { currentUser } = useAuth();
   const {
     id,
     thumbnail,
@@ -29,14 +31,20 @@ const Card = ({ products }) => {
 
   const handleToggleWishlist = () => {
     if (isAvailable) {
-      dispatch(removeFromWishlist(id));
+      if (currentUser) {
+        dispatch(removeFromWishlist(id));
+      }
     } else {
-      dispatch(addToWishList(products));
+      if (currentUser) {
+        dispatch(addToWishList(products));
+      }
     }
   };
 
   const handleAddCart = (item) => {
-    dispatch(addToCart(item));
+    if (currentUser) {
+      dispatch(addToCart(item));
+    }
   };
 
   return (

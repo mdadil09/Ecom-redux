@@ -9,10 +9,13 @@ import {
   addToWishList,
   removeFromWishlist,
 } from "../redux/slice/wishListSlice";
+import useAuth from "../Auth/useAuth";
 
 const SingleProducts = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const { currentUser } = useAuth();
+
   const products = useSelector((state) => state.product.products);
 
   const singleProduct = products.find((item) => item.id === parseInt(id));
@@ -25,14 +28,20 @@ const SingleProducts = () => {
 
   const handleToggleWishlist = () => {
     if (isAvailable) {
-      dispatch(removeFromWishlist(parseInt(id)));
+      if (currentUser) {
+        dispatch(removeFromWishlist(parseInt(id)));
+      }
     } else {
-      dispatch(addToWishList(singleProduct));
+      if (currentUser) {
+        dispatch(addToWishList(singleProduct));
+      }
     }
   };
 
   const handleAddCart = (item) => {
-    dispatch(addToCart(item));
+    if (currentUser) {
+      dispatch(addToCart(item));
+    }
   };
   return (
     <>

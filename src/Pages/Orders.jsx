@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { generateStarRating } from "../config/config";
 import OrderInfo from "../components/Checkout/OrderInfo";
 import { Link } from "react-router-dom";
+import useAuth from "../Auth/useAuth";
 
 const Orders = () => {
   const orders = useSelector((state) => state.order.orders);
@@ -14,6 +15,10 @@ const Orders = () => {
   const [modal, setModal] = useState(false);
   const [filteredItem, setFilteredItem] = useState([]);
   const [isClick, setIsClick] = useState(false);
+
+  const { currentUser } = useAuth();
+
+  console.log(currentUser.displayName);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -28,8 +33,6 @@ const Orders = () => {
     innerArray.map((item) => item)
   );
 
-  console.log(orders);
-
   return (
     <>
       <Navbar />
@@ -37,8 +40,8 @@ const Orders = () => {
         <div className="col-lg-9 my-lg-0 my-1">
           <div id="main-content" className="bg-white border">
             <div className="d-flex flex-column">
-              <div className="h5">Hello Jhon,</div>
-              <div>Logged in as: jhondoe7@gmail.com</div>
+              <div className="h5">{currentUser.displayName},</div>
+              <div>Logged in as: {currentUser.email}</div>
             </div>
             <div className="d-flex my-4 flex-wrap">
               <div className="box me-4 my-1 bg-light">

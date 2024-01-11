@@ -76,7 +76,9 @@ const Navbar = () => {
         )}
         <Link className="cart-icon" to="/cart">
           🛒
-          <div className="cart-quantity">{item.length}</div>{" "}
+          <div className="cart-quantity">
+            {currentUser ? item.length : 0}
+          </div>{" "}
         </Link>
       </div>
     </div>
