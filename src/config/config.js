@@ -62,3 +62,8 @@ export const addCusDetails = (
   };
   cusArr.push(cus);
 };
+
+export const updateTotalPrice = (product) => {
+  let total = product.reduce((acc, item) => acc + item.price, 0);
+  return total;
+};

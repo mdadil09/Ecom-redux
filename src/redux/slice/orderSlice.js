@@ -4,6 +4,7 @@ const initialState = {
   orders: [],
   cusDetails: [],
   orderInfo: [],
+  checkOutDetails: [],
 };
 
 const orderSlice = createSlice({
@@ -19,9 +20,13 @@ const orderSlice = createSlice({
     addToOrderInfo: (state, action) => {
       state.orderInfo.push(action.payload);
     },
+    addToCheckout: (state, action) => {
+      state.checkOutDetails.push(action.payload);
+    },
   },
 });
 
-export const { addToOrder, addToCusDetails } = orderSlice.actions;
+export const { addToOrder, addToCusDetails, addToOrderInfo, addToCheckout } =
+  orderSlice.actions;
 
 export default orderSlice.reducer;

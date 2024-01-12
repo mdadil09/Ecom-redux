@@ -60,44 +60,42 @@ const Card = ({ products }) => {
 
   return (
     <>
-      <Link to={`/productDetails/${id}`}>
-        <div className="product-card" key={id}>
-          <div className="product-badge">{rating.toFixed(1)} ⭐</div>
-          <div className="product-wishlist">
-            <FontAwesomeIcon
-              icon={faHeart}
-              className={`heart-icon ${
-                currentUser ? (isAvailable ? "clicked" : "") : ""
-              }`}
-              onClick={handleToggleWishlist}
-            />
-          </div>
+      <div className="product-card" key={id}>
+        <div className="product-badge">{rating.toFixed(1)} ⭐</div>
+        <div className="product-wishlist">
+          <FontAwesomeIcon
+            icon={faHeart}
+            className={`heart-icon ${
+              currentUser ? (isAvailable ? "clicked" : "") : ""
+            }`}
+            onClick={handleToggleWishlist}
+          />
+        </div>
 
-          <div className="product-tumb">
-            <img src={thumbnail} alt="" />
-          </div>
-          <div className="product-details">
-            <span className="product-catagory">{category}</span>
-            <h4>
-              <Link to={`/productDetails/${id}`}>{title}</Link>
-            </h4>
-            <p style={{ fontSize: "8px", margin: 0 }}>
-              {getFirstLine(description)}
-            </p>
-            <div className="product-bottom-details">
-              <div className="product-price">
-                <small>${price}</small>$
-                {getPriceAfterDiscount(price, discountPercentage)}
-              </div>
-              <div className="product-links">
-                <button onClick={() => handleAddCart(products)}>
-                  Add to cart
-                </button>
-              </div>
+        <div className="product-tumb">
+          <img src={thumbnail} alt="" />
+        </div>
+        <div className="product-details">
+          <span className="product-catagory">{category}</span>
+          <h4>
+            <Link to={`/productDetails/${id}`}>{title}</Link>
+          </h4>
+          <p style={{ fontSize: "8px", margin: 0 }}>
+            {getFirstLine(description)}
+          </p>
+          <div className="product-bottom-details">
+            <div className="product-price">
+              <small>${price}</small>$
+              {getPriceAfterDiscount(price, discountPercentage)}
+            </div>
+            <div className="product-links">
+              <button onClick={() => handleAddCart(products)}>
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
-      </Link>
+      </div>
     </>
   );
 };

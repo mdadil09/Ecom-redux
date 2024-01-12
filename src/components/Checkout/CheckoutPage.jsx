@@ -16,6 +16,10 @@ const CheckoutPage = () => {
   const [address, setAddress] = useState("");
   const [pinCode, setPinCode] = useState("");
   const cart = useSelector((state) => state.cart.carts);
+  const checkOutDetails = useSelector((state) => state.order.checkOutDetails);
+
+  console.log("Checkout: ", checkOutDetails);
+
   const dispatch = useDispatch();
 
   const toggleModal = () => {

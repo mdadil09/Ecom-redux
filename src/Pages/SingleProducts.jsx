@@ -10,6 +10,7 @@ import {
   removeFromWishlist,
 } from "../redux/slice/wishListSlice";
 import useAuth from "../Auth/useAuth";
+import { addToCheckout } from "../redux/slice/orderSlice";
 
 const SingleProducts = () => {
   const dispatch = useDispatch();
@@ -43,6 +44,12 @@ const SingleProducts = () => {
       dispatch(addToCart(item));
     }
   };
+
+  const handleAddToCheckOut = (item) => {
+    if (currentUser) {
+      dispatch(addToCheckout(item));
+    }
+  };
   return (
     <>
       <Navbar />
@@ -51,6 +58,7 @@ const SingleProducts = () => {
         singleProduct={singleProduct}
         handleAddCart={handleAddCart}
         handleToggleWishlist={handleToggleWishlist}
+        handleAddToCheckOut={handleAddToCheckOut}
       />
       <Footer />
     </>

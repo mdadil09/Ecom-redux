@@ -7,6 +7,7 @@ const SingleProductCard = ({
   handleAddCart,
   handleToggleWishlist,
   isAvailable,
+  handleAddToCheckOut,
 }) => {
   const [mainImage, setMainImage] = useState(singleProduct.thumbnail);
 
@@ -100,9 +101,14 @@ const SingleProductCard = ({
                   </div>
                   <span className="divider" />
                   <div className="single-product-btn-group">
-                    <div className="button buy-now">
-                      <i className="bx bxs-zap" /> Buy Now
-                    </div>
+                    <Link to="/checkout">
+                      <div
+                        className="button buy-now"
+                        onClick={() => handleAddToCheckOut(singleProduct)}
+                      >
+                        <i className="bx bxs-zap" /> Buy Now
+                      </div>
+                    </Link>
                     <div
                       className="button add-cart"
                       onClick={() => handleAddCart(singleProduct)}
