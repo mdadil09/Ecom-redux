@@ -3,8 +3,12 @@ import Navbar from "../Headers/Navbar";
 import Footer from "../Footer/Footer";
 import PaymentModal from "./PaymentModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getTotalPrice } from "../../config/config";
-import { addToCusDetails, addToOrder } from "../../redux/slice/orderSlice";
+import { v4 as uuid } from "uuid";
+import {
+  addToCheckout,
+  addToCusDetails,
+  addToOrder,
+} from "../../redux/slice/orderSlice";
 import SuccessModal from "./SuccessModal";
 
 const CheckoutPage = () => {
@@ -15,10 +19,15 @@ const CheckoutPage = () => {
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
   const [pinCode, setPinCode] = useState("");
-  const cart = useSelector((state) => state.cart.carts);
   const checkOutDetails = useSelector((state) => state.order.checkOutDetails);
 
-  console.log("Checkout: ", checkOutDetails);
+  const idArr = checkOutDetails.map((item) => item.id);
+
+  const id = idArr[0];
+
+  console.log(idArr);
+
+  const totalPrice = checkOutDetails.reduce((acc, item) => acc + item.price, 0);
 
   const dispatch = useDispatch();
 
@@ -49,6 +58,7 @@ const CheckoutPage = () => {
       dispatch(addToOrder(item));
       dispatch(
         addToCusDetails({
+          id: uuid().slice(0, 8),
           name: name,
           mobile: mobile,
           email: email,
@@ -56,6 +66,12 @@ const CheckoutPage = () => {
           address: address,
         })
       );
+      const updatedProductList = checkOutDetails.filter(
+        (product) => product.id !== item.id
+      );
+
+      dispatch(addToCheckout(updatedProductList));
+
       toggleModal1();
     }
   };
@@ -96,7 +112,7 @@ const CheckoutPage = () => {
               <h4 className="text-dark">
                 Item Total Amount :
                 <span className="float-end text-success">
-                  ${parseFloat(getTotalPrice(cart)) + parseFloat(5)}
+                  ${parseFloat(totalPrice) + parseFloat(5)}
                 </span>
               </h4>
               <hr />
@@ -221,7 +237,7 @@ const CheckoutPage = () => {
                           <button
                             type="submit"
                             className="btn btn-primary"
-                            onClick={() => handleCodOrders(cart)}
+                            onClick={() => handleCodOrders(checkOutDetails)}
                           >
                             Place Order
                           </button>
@@ -258,7 +274,7 @@ const CheckoutPage = () => {
       <PaymentModal
         modal={modal}
         toggleModal={toggleModal}
-        cart={cart}
+        checkOutDetails={checkOutDetails}
         toggleModal1={toggleModal1}
         name={name}
         mobile={mobile}

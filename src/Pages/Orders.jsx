@@ -18,7 +18,6 @@ const Orders = () => {
 
   const { currentUser } = useAuth();
 
-  console.log(cusDetails);
   const toggleModal = () => {
     setModal(!modal);
   };
@@ -31,6 +30,8 @@ const Orders = () => {
   const productObjects = orders.flatMap((innerArray) =>
     innerArray.map((item) => item)
   );
+
+  console.log(cusDetails);
 
   return (
     <>
@@ -80,7 +81,7 @@ const Orders = () => {
             </div>
             <div className="text-uppercase">My recent orders</div>
             {productObjects.map((item) => (
-              <div className="order my-3 bg-light" key={item.product.id}>
+              <div className="order my-3 bg-light" key={item.id}>
                 <div className="row">
                   <div className="col-lg-4">
                     <div className="d-flex flex-column justify-content-between order-summary">
@@ -93,7 +94,7 @@ const Orders = () => {
                           paid
                         </div>
                       </div>
-                      <div className="fs-8">{item.product.title}</div>
+                      <div className="fs-8">{item.title}</div>
                       <div className="fs-8">22 August, 2020 | 12:05 PM</div>
                       <div className="rating d-flex align-items-center pt-1">
                         <img
@@ -101,7 +102,7 @@ const Orders = () => {
                           alt=""
                         />
                         <span className="px-2">Rating:</span>
-                        {generateStarRating(item.product.rating)}
+                        {generateStarRating(item.rating)}
                       </div>
                     </div>
                   </div>

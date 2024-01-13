@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import remove from "../../assests/remove.png";
 import { getPriceAfterDiscount } from "../../config/config";
+import Address from "./Address";
 
 const customStyles = {
   content: {
@@ -27,6 +28,9 @@ const OrderInfo = ({
   toggleModal,
   isClick,
 }) => {
+  const id = cusDetails.map((item) => item.id);
+
+  const orderId = id[0];
   return (
     <>
       <Modal
@@ -53,15 +57,14 @@ const OrderInfo = ({
                     </div>
                     <div className="d-flex justify-content-between">
                       <span className="font-weight-bold">
-                        {filteredItem.product.title}(Qty:{filteredItem.quantity}
-                        )
+                        {filteredItem.title})
                       </span>
                       <span className="text-muted">
                         $
                         {getPriceAfterDiscount(
-                          filteredItem.product.price,
-                          filteredItem.product.discountPercentage
-                        ) * filteredItem.quantity}
+                          filteredItem.price,
+                          filteredItem.discountPercentage
+                        )}
                       </span>
                     </div>
                     <div className="d-flex justify-content-between">
@@ -76,28 +79,20 @@ const OrderInfo = ({
                       <span className="font-weight-bold">Total</span>
                       <span className="font-weight-bold theme-color">
                         ${" "}
-                        {getPriceAfterDiscount(
-                          filteredItem.product.price,
-                          filteredItem.product.discountPercentage
-                        ) *
-                          filteredItem.quantity +
-                          parseInt(5)}
+                        {parseFloat(
+                          getPriceAfterDiscount(
+                            filteredItem.price,
+                            filteredItem.discountPercentage
+                          )
+                        ) + parseInt(5)}
                       </span>
                     </div>
                   </div>
                 )
               : null}
             <hr />
-            <h5>Delivery Address</h5>
-            <hr />
-            {cusDetails.map((item) => (
-              <div className="user-summary">
-                <p>{item.name}</p>
-                <p>{item.mobile}</p>
-                <p>{item.email}</p>
-                <p>{item.address}</p>
-              </div>
-            ))}
+
+            <Address cusDetails={cusDetails} orderId={orderId} />
           </div>
         </div>
       </Modal>

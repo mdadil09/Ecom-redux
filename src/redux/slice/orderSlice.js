@@ -21,7 +21,7 @@ const orderSlice = createSlice({
       state.orderInfo.push(action.payload);
     },
     addToCheckout: (state, action) => {
-      state.checkOutDetails.push(action.payload);
+      state.checkOutDetails = action.payload;
     },
   },
 });

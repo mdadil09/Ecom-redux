@@ -9,10 +9,13 @@ import { getPriceAfterDiscount, getTotalPrice } from "../config/config";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Headers/Navbar";
 import Footer from "../components/Footer/Footer";
+import { addToCheckout } from "../redux/slice/orderSlice";
+import useAuth from "../Auth/useAuth";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.carts);
+  const { currentUser } = useAuth();
 
   const handleRemove = (id) => {
     dispatch(removeFromCart(id));
@@ -25,6 +28,14 @@ const Cart = () => {
   const handleDecrement = (id) => {
     dispatch(decrementItemInCart(id));
   };
+
+  const handleAddToCheckOut = (item) => {
+    if (currentUser) {
+      dispatch(addToCheckout(item));
+    }
+  };
+
+  const itemToSendCheckout = cart.flatMap((item) => item.product);
 
   return (
     <>
@@ -145,7 +156,12 @@ const Cart = () => {
                 to={`${cart.length > 0 ? "/checkout" : ""}`}
               >
                 {" "}
-                <button className="cart-btn">CHECKOUT</button>
+                <button
+                  className="cart-btn"
+                  onClick={() => handleAddToCheckOut(itemToSendCheckout)}
+                >
+                  CHECKOUT
+                </button>
               </Link>
             </div>
           </div>

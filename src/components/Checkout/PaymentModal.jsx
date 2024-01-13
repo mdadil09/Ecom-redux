@@ -30,7 +30,7 @@ const customStyles = {
 const PaymentModal = ({
   modal,
   toggleModal,
-  cart,
+  checkOutDetails,
   toggleModal1,
   name,
   mobile,
@@ -299,7 +299,7 @@ const PaymentModal = ({
                   <button
                     type="submit"
                     className="subscribe btn btn-primary btn-block shadow-sm"
-                    onClick={() => handleCardsOrders(cart)}
+                    onClick={() => handleCardsOrders(checkOutDetails)}
                   >
                     {" "}
                     Confirm Payment{" "}
@@ -331,7 +331,7 @@ const PaymentModal = ({
                     <button
                       type="submit"
                       class="btn btn-primary "
-                      onClick={() => handleGpayOrders(cart)}
+                      onClick={() => handleGpayOrders(checkOutDetails)}
                     >
                       <FontAwesomeIcon
                         icon={faGooglePay}
@@ -381,7 +381,7 @@ const PaymentModal = ({
                   <button
                     type="submit"
                     class="btn btn-primary "
-                    onClick={() => handleBankOrders(cart)}
+                    onClick={() => handleBankOrders(checkOutDetails)}
                   >
                     <i class="fas fa-mobile-alt mr-2"></i> Proceed Payment
                   </button>{" "}

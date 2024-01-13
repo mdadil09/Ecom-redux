@@ -17,6 +17,8 @@ const SingleProductCard = ({
     setMainImage(sliderImageList[index]);
   };
 
+  const arr = [singleProduct];
+
   return (
     <>
       <div className="single-container">
@@ -104,7 +106,7 @@ const SingleProductCard = ({
                     <Link to="/checkout">
                       <div
                         className="button buy-now"
-                        onClick={() => handleAddToCheckOut(singleProduct)}
+                        onClick={() => handleAddToCheckOut(arr)}
                       >
                         <i className="bx bxs-zap" /> Buy Now
                       </div>
