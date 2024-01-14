@@ -2,7 +2,6 @@ import React from "react";
 
 const Address = ({ cusDetails, orderId }) => {
   const filteredAddItem = cusDetails.find((item) => item.id === orderId);
-  console.log("filteredAddItem: ", filteredAddItem);
   const { name, mobile, email, address } = filteredAddItem;
   return (
     <>

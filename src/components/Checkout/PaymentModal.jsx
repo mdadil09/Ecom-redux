@@ -8,7 +8,12 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faGooglePay } from "@fortawesome/free-brands-svg-icons";
 import { useDispatch } from "react-redux";
-import { addToCusDetails, addToOrder } from "../../redux/slice/orderSlice";
+import {
+  addToCheckout,
+  addToCusDetails,
+  addToOrder,
+} from "../../redux/slice/orderSlice";
+import { v4 as uuid } from "uuid";
 
 const customStyles = {
   content: {
@@ -113,6 +118,7 @@ const PaymentModal = ({
       dispatch(addToOrder(item));
       dispatch(
         addToCusDetails({
+          id: uuid().slice(0, 8),
           name: name,
           mobile: mobile,
           email: email,
@@ -120,6 +126,11 @@ const PaymentModal = ({
           address: address,
         })
       );
+      const updatedProductList = checkOutDetails.filter(
+        (product) => product.id !== item.id
+      );
+
+      dispatch(addToCheckout(updatedProductList));
       toggleModal();
       toggleModal1();
     }
@@ -130,6 +141,7 @@ const PaymentModal = ({
       dispatch(addToOrder(item));
       dispatch(
         addToCusDetails({
+          id: uuid().slice(0, 8),
           name: name,
           mobile: mobile,
           email: email,
@@ -137,6 +149,11 @@ const PaymentModal = ({
           address: address,
         })
       );
+      const updatedProductList = checkOutDetails.filter(
+        (product) => product.id !== item.id
+      );
+
+      dispatch(addToCheckout(updatedProductList));
       toggleModal();
       toggleModal1();
     }
@@ -147,6 +164,7 @@ const PaymentModal = ({
       dispatch(addToOrder(item));
       dispatch(
         addToCusDetails({
+          id: uuid().slice(0, 8),
           name: name,
           mobile: mobile,
           email: email,
@@ -154,6 +172,11 @@ const PaymentModal = ({
           address: address,
         })
       );
+      const updatedProductList = checkOutDetails.filter(
+        (product) => product.id !== item.id
+      );
+
+      dispatch(addToCheckout(updatedProductList));
       toggleModal();
       toggleModal1();
     }

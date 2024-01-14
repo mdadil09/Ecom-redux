@@ -23,7 +23,8 @@ const Orders = () => {
   };
   const handleProductInfo = (item) => {
     toggleModal();
-    setFilteredItem(item);
+    const orderId = cusDetails.map((detail) => detail.id);
+    setFilteredItem({ ...item, orderId: orderId });
     setIsClick(true);
   };
 
@@ -31,7 +32,7 @@ const Orders = () => {
     innerArray.map((item) => item)
   );
 
-  console.log(cusDetails);
+  console.log(filteredItem);
 
   return (
     <>

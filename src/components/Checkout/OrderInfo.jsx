@@ -57,7 +57,7 @@ const OrderInfo = ({
                     </div>
                     <div className="d-flex justify-content-between">
                       <span className="font-weight-bold">
-                        {filteredItem.title})
+                        {filteredItem.title}
                       </span>
                       <span className="text-muted">
                         $

@@ -10,6 +10,7 @@ import {
   addToOrder,
 } from "../../redux/slice/orderSlice";
 import SuccessModal from "./SuccessModal";
+import { getPriceAfterDiscount } from "../../config/config";
 
 const CheckoutPage = () => {
   const [modal, setModal] = useState(false);
@@ -21,13 +22,11 @@ const CheckoutPage = () => {
   const [pinCode, setPinCode] = useState("");
   const checkOutDetails = useSelector((state) => state.order.checkOutDetails);
 
-  const idArr = checkOutDetails.map((item) => item.id);
-
-  const id = idArr[0];
-
-  console.log(idArr);
-
-  const totalPrice = checkOutDetails.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = checkOutDetails.reduce(
+    (acc, item) =>
+      acc + getPriceAfterDiscount(item.price, item.discountPercentage),
+    0
+  );
 
   const dispatch = useDispatch();
 

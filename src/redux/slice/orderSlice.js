@@ -18,7 +18,7 @@ const orderSlice = createSlice({
       state.cusDetails.push(action.payload);
     },
     addToOrderInfo: (state, action) => {
-      state.orderInfo.push(action.payload);
+      state.orderInfo = action.payload;
     },
     addToCheckout: (state, action) => {
       state.checkOutDetails = action.payload;
