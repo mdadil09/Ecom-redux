@@ -32,7 +32,7 @@ const Orders = () => {
     innerArray.map((item) => item)
   );
 
-  console.log(filteredItem);
+  console.log(orders);
 
   return (
     <>

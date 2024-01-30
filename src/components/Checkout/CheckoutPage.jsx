@@ -24,7 +24,9 @@ const CheckoutPage = () => {
 
   const totalPrice = checkOutDetails.reduce(
     (acc, item) =>
-      acc + getPriceAfterDiscount(item.price, item.discountPercentage),
+      (acc += parseFloat(
+        getPriceAfterDiscount(item.price, item.discountPercentage)
+      )),
     0
   );
 
@@ -182,7 +184,7 @@ const CheckoutPage = () => {
                       value={address}
                       onChange={handleAddress}
                       rows={2}
-                      defaultValue={""}
+                      // defaultValue={"Noida"}
                       required
                     />
                   </div>
